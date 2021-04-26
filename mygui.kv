@@ -1,0 +1,44 @@
+<MyLayout>
+    country: country
+
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+
+
+        Label:
+            id: click_label
+            text: "COVID-19 Cases"
+            font_size: 32
+
+        TextInput:
+            id: country
+            multiline: False
+
+        Button:
+            id: save
+            text: "Save Country"
+            on_press: root.save()
+
+        Spinner:
+            id: spinner_id
+            size_hint: 0.3, 0.5
+            text: "Saved Countries"
+            values: []
+
+            on_press: root.load_saves()
+            on_text: root.spinner_clicked(spinner_id.text)
+
+        Label:
+            id: actual
+            text: ""
+            font_size: 20
+
+        Label:
+            id: total
+            text: ""
+            font_size: 20
+
+        Label:
+            text: ''
