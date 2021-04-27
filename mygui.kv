@@ -5,8 +5,6 @@
         orientation: "vertical"
         size: root.width, root.height
 
-
-
         Label:
             id: click_label
             text: "COVID-19 Cases"
@@ -20,6 +18,11 @@
             id: save
             text: "Save Country"
             on_press: root.save()
+
+        Button:
+            id: clear
+            text: "Clear Saves"
+            on_press: root.clear()
 
         Spinner:
             id: spinner_id

@@ -43,17 +43,19 @@ def get_country_covid_cases(country):
 
     cases_deaths = country_soup.select(".news_li")[0].getText()
 
-    spl_string = cases_deaths.split()
+    words = cases_deaths.split(' ')
 
-    rm = spl_string[:-1]
+    new_cases = words[0]
 
-    cases_deaths = ' '.join([str(elem) for elem in rm])
+    new_deaths = words[4]
+
+    cases_deaths = f"There are {new_cases} new cases and {new_deaths} new deaths in {country.upper()}"
 
     if country == "WORLD" and country_exists:
-        actual = ""
+        actual = " "
         total = f"{date}: Worldwide there are a total of {int(country_cases.replace(',', '')):,} cases, {int(country_deaths.replace(',', '')):,} deaths and {int(country_recoveries.replace(',', '')):,} recoveries"
     elif country_exists:
         actual = f"{date}: Today there {cases_deaths}."
-        total = f"In {country.capitalize()} there are a total of {int(country_cases.replace(',', '')):,} cases, {int(country_deaths.replace(',', '')):,} deaths and {int(country_recoveries.replace(',', '')):,} recoveries"
+        total = f"In {country.upper()} there are a total of {int(country_cases.replace(',', '')):,} cases, {int(country_deaths.replace(',', '')):,} deaths and {int(country_recoveries.replace(',', '')):,} recoveries"
 
     return actual, total
